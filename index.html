@@ -76,12 +76,6 @@
       <div class="table-wrap"><table id="transportTable"></table></div>
     </section>
 
-    <section>
-      <div class="section-title"><h2 id="budgetTitle"></h2><span id="budgetSub"></span></div>
-      <div class="table-wrap"><table id="budgetTable"></table></div>
-      <div class="budget-total" id="budgetCards"></div>
-      <p class="small-note" id="budgetNote"></p>
-    </section>
 
     <section>
       <div class="section-title"><h2 id="weatherTitle"></h2><span id="weatherSub"></span></div>
@@ -231,7 +225,7 @@
       document.getElementById('heroSubtitle').textContent=d.subtitle;
       document.getElementById('heroChips').innerHTML=d.chips.map(c=>`<span class="chip">${c}</span>`).join('');
       document.getElementById('overview').innerHTML=d.overview.map(s=>`<div class="stat"><div class="num">${s[0]}</div><div class="label">${s[1]}</div></div>`).join('');
-      Object.entries({flight:'flight',hotel:'hotel',map:'map',daily:'daily',note:'notes',link:'links',transport:'transport',budget:'budget',weather:'weather',packing:'packing'}).forEach(([id,key])=>{document.getElementById(`${id}Title`).textContent=d.sections[key][0];document.getElementById(`${id}Sub`).textContent=d.sections[key][1];});
+      Object.entries({flight:'flight',hotel:'hotel',map:'map',daily:'daily',note:'notes',link:'links',transport:'transport',weather:'weather',packing:'packing'}).forEach(([id,key])=>{document.getElementById(`${id}Title`).textContent=d.sections[key][0];document.getElementById(`${id}Sub`).textContent=d.sections[key][1];});
       document.getElementById('fullMapBtn').textContent=d.btns[0];document.getElementById('sbbBtn').textContent=d.btns[1];
       document.getElementById('flightTable').innerHTML=htmlTable(d.flightHeads,d.flights);
       document.getElementById('hotelGrid').innerHTML=d.hotels.map(h=>`<article class="hotel"><div class="city">${h[0]}</div><h3>${h[1]}</h3><p>${h[2]}</p><p>${h[3]}</p><span class="badge">${h[4]}</span></article>`).join('');
@@ -244,9 +238,6 @@
       document.getElementById('notes').innerHTML=d.notes.map(n=>`<article class="note"><h3>${n[0]}</h3><p>${n[1]}</p></article>`).join('');
       document.getElementById('mapLinks').innerHTML=mapLinks.map(l=>`<a class="map-link" href="${l[2]}" target="_blank"><strong>${l[0]}</strong><span>${l[1]}</span></a>`).join('');
       document.getElementById('transportTable').innerHTML=htmlTable(d.transportHeads,d.transport);
-      document.getElementById('budgetTable').innerHTML=htmlTable(d.budgetHeads,d.budget);
-      document.getElementById('budgetCards').innerHTML=d.budgetCards.map(b=>`<div class="budget-card"><div class="amount">${b[0]}</div><div class="caption">${b[1]}</div></div>`).join('');
-      document.getElementById('budgetNote').textContent=d.budgetNote;
       document.getElementById('weatherTable').innerHTML=htmlTable(d.weatherHeads,d.weather);
       document.getElementById('packingGrid').innerHTML=d.packing.map(p=>`<article class="check-card"><h3>${p[0]}</h3>${list(p[1])}</article>`).join('');
       document.getElementById('footerText').textContent=d.footer;
